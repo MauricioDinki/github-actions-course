@@ -5,7 +5,7 @@ on:
     types: [closed, assigned, opened, reopened]
 jobs:
   run-github-actions:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: List Files
         run: |
