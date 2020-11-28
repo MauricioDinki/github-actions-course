@@ -1,18 +1,18 @@
-name: Matrix
+name: Sample Should Fail Run 1 Only
 on: push
 jobs:
-  node-version:
+  node-multiple-version:
+    runs-on: ${{ matrix.os }}
     strategy:
-      matirx:  
+      fail-fast: false
+      matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node-version: [6,8,10]
-      max-parallel: 5
-    runs-on: ${{ matrix.os }}
     steps:
-      - name: Log node version
-        run: node -v
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: ${{ matrix.node_version }}
-      - name: Log Node version
-        run: node -v
+    - name: Log node version
+      run: node -v
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ matrix.node_version }}
+    - name: Log Node version
+      run: node -v
