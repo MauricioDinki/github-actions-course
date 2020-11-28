@@ -1,6 +1,22 @@
 name: Actions Wokflow
 on:
   push:
+    #branches-ignore # Not both at the same time
+    branches:
+      - master
+      # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+      # - 'feature/**'
+      # - '!feature/featc'
+    tags:
+      - v1.*
+    paths:
+      - "**.py"
+  # https://developer.github.com/v3/repos/#create-a-repository-dispatch-event
+  #repository_dispatch: 
+  #  types: [build]
+  #schedule:
+  #  - cron: "0/5 * * * *"
+  #push:
   pull_request:
     types: [closed, assigned, opened, reopened]
 jobs:
