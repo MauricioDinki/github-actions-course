@@ -3,11 +3,22 @@ on: push
 jobs:
   node-multiple-version:
     runs-on: ${{ matrix.os }}
+    env:
+      IS_UBUNTU_8: ${{ matrix.is_ubunutu_8 }}
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         node-version: [6,8,10]
+        include:
+          - os: ubuntu-latest
+            node-version: 8
+            is_ubunutu_8: "true"
+        exclude:
+          - os: ubuntu-latest
+            node-version: 6
+          - os: macos-latest
+            node-version: 8
     steps:
     - name: Log node version
       run: node -v
