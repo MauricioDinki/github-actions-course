@@ -1,6 +1,6 @@
 name: Actions Wokflow
 on:
-  push:
+  pull_request:
     #branches-ignore # Not both at the same time
     branches:
       - master
